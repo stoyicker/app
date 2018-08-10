@@ -1,5 +1,5 @@
 package app.home
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 internal class HomeActivity : AppCompatActivity()

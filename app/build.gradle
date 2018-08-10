@@ -1,38 +1,30 @@
 buildscript {
 	repositories {
+        google()
         jcenter()
     }
-    final def androidPluginVersion = "2.3.3"
-    final def dokkaPluginVersion = "0.9.15"
+    final def androidPluginVersion = "3.1.4"
     dependencies {
         classpath "com.android.tools.build:gradle:$androidPluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$props_kotlinversion"
-        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaPluginVersion"
     }
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
 
 android {
     compileSdkVersion Integer.parseInt(props_compilesdkversion)
     buildToolsVersion props_buildtoolsversion
     defaultConfig {
-        applicationId props_applicationidbase
         versionCode Integer.parseInt(props_versioncode)
-        versionName props_versionname
+        versionName props_versioncode
         minSdkVersion props_minsdkversion
         targetSdkVersion props_targetsdkversion
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-    dexOptions {
-        preDexLibraries false
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
         abortOnError true
@@ -42,27 +34,22 @@ android {
         quiet false
         warningsAsErrors true
     }
-    sourceSets.forEach {
-        it.java.srcDirs = ["src/$it.name/kotlin"]
+    flavorDimensions "product"
+    productFlavors {
+        surrenderAt20 {
+            dimension "product"
+        }
     }
-    variantFilter {
-    	if (it.buildType.name == 'release') {
-    		it.setIgnore(true)
-    	}
+    productFlavors.each {
+        it.applicationIdSuffix = "${it.name.toLowerCase(Locale.ENGLISH)}"
     }
 }
 repositories {
-    jcenter()
     google()
+    jcenter()
 }
-final def espressoVersion = "3.0.1"
-final def junitVersion = "4.12"
-final def supportLibraryVersion = "26.0.2"
+final def androidxVersion = "1.0.0-rc01"
 dependencies {
-    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
-    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {
-        exclude group: "com.android.support"
-    }
-    testCompile "junit:junit:$junitVersion"
+    implementation "androidx.appcompat:appcompat:$androidxVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
 }
