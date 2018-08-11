@@ -23,7 +23,7 @@ before_install:
   - docker cp ./ $CONTAINER:root/${TRAVIS_REPO_SLUG}
 env:
   matrix:
-  - TASK="\"./gradlew :app:build --no-daemon\""
+  - TASK="\"./gradlew :app:build -Dhttp.socketTimeout=120000 -Dhttp.connectionTimeout=120000 --no-daemon\""
 script:
   - docker exec -it $CONTAINER /bin/sh -c "cd root/${TRAVIS_REPO_SLUG}; ./_ci/script.sh ${TASK}"
 after_success:
