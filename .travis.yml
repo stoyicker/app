@@ -36,5 +36,7 @@ notifications:
   email:
     recipients:
       jorge.diazbenitosoriano@gmail.com
+    on_success:
+      never
     on_failure:
       change
