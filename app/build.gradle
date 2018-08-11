@@ -47,12 +47,12 @@ android {
         it.applicationIdSuffix = "${it.name.toLowerCase(Locale.ENGLISH)}"
     }
     variantFilter { variant ->
-        def buildTypeName = variant.buildType*.name
-        def flavorName = variant.flavors*.name
-        if (System.env["CI"] == null && buildTypeName.contains("release") || !flavorName.contains("dev")) {
+        def buildTypeNames = variant.buildType*.name
+        def flavorNames = variant.flavors*.name
+        if (System.env["CI"] == null && (buildTypeNames.contains("release") || !flavorNames.contains("dev"))) {
             setIgnore(true)
         }
-        if (System.env["CI"] != null && (buildTypeName.contains("debug") || flavorName.contains("dev"))) {
+        if (System.env["CI"] != null && (buildTypeNames.contains("debug") || flavorNames.contains("dev"))) {
             setIgnore(true)
         }
     }
