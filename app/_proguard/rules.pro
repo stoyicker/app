@@ -27,7 +27,7 @@
 -dontwarn kotlin.jvm.internal.Reflection
 -dontwarn com.google.errorprone.annotations.*
 -dontwarn com.squareup.okhttp.**
--keep class android.support.v7.widget.SearchView { *; }
+-keep class androidx.appcompat.widget.SearchView { *; }
 -dontwarn android.arch.util.paging.CountedDataSource
 -dontwarn android.arch.persistence.room.paging.LimitOffsetDataSource
 -dontwarn io.reactivex.internal.**
