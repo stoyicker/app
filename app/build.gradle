@@ -42,6 +42,14 @@ android {
         quiet false
         warningsAsErrors true
     }
+    signingConfigs {
+        surrenderAt20 {
+            storeFile new File("${rootProject.rootDir}/keystores/surrenderAt20.keystore")
+            storePassword "surrenderAt20"
+            keyAlias "surrenderAt20"
+            keyPassword "surrenderAt20"
+        }
+    }
     flavorDimensions "product"
     productFlavors {
         dev {
@@ -49,6 +57,7 @@ android {
         }
         surrenderAt20 {
             dimension "product"
+            signingConfig signingConfigs.surrenderAt20
         }
     }
     productFlavors.each {
