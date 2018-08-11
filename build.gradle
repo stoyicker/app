@@ -1,7 +1,0 @@
-task clean(type: Delete, overwrite: true) {
-    group "Verification"
-    description "Deletes the build directories of the whole project and the static analysis result."
-    rootProject.allprojects.each {
-        delete it.buildDir
-  }
-}

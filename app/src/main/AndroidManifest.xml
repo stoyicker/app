@@ -5,7 +5,8 @@
     package="app">
     <application
         android:allowBackup="false"
-        android:icon="@null"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/product_app_label">
         <activity
             android:name="app.home.HomeActivity"

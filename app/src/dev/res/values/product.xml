@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="product_app_label">Surrender at 20</string>
+    <string name="product_app_label">App Dev</string>
     <!--<string name="product_home_url" translatable="false">https://www.surrenderat20.net/</string>-->
+    <mipmap name="ic_launcher">@null</mipmap>
+    <mipmap name="ic_launcher_round">@null</mipmap>
 </resources>

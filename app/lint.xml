@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <lint>
     <issue id="GoogleAppIndexingWarning" severity="ignore" />
+    <issue id="IconExpectedSize">
+        <ignore regexp="ic_launcher_foreground" />
+    </issue>
+    <issue id="IconDuplicates">
+        <ignore regexp="ic_launcher_round" />
+    </issue>
 </lint>

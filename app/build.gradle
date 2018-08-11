@@ -36,6 +36,9 @@ android {
     }
     flavorDimensions "product"
     productFlavors {
+        dev {
+            dimension "product"
+        }
         surrenderAt20 {
             dimension "product"
         }
@@ -43,13 +46,23 @@ android {
     productFlavors.each {
         it.applicationIdSuffix = "${it.name.toLowerCase(Locale.ENGLISH)}"
     }
+    variantFilter { variant ->
+        def buildTypeName = variant.buildType*.name
+        if ("$System.env.CI" && buildTypeName.contains("release")) {
+            setIgnore(true)
+        }
+    }
 }
 repositories {
     google()
     jcenter()
 }
 final def androidxVersion = "1.0.0-rc01"
+final def junitVersion = "5.2.0"
 dependencies {
     implementation "androidx.appcompat:appcompat:$androidxVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
 }
