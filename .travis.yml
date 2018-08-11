@@ -28,7 +28,7 @@ script:
   - docker exec -it $CONTAINER /bin/sh -c "cd root/${TRAVIS_REPO_SLUG}; ./_ci/script.sh ${TASK}"
 after_success:
   - |
-    if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]]; then
+    if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then
       echo "CI on master succeded. Executing release tasks..."
       docker exec -t $CONTAINER /bin/sh -c "cd root/${TRAVIS_REPO_SLUG}; ./_ci/release.sh"
     fi

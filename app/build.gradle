@@ -48,7 +48,11 @@ android {
     }
     variantFilter { variant ->
         def buildTypeName = variant.buildType*.name
-        if ("$System.env.CI" && buildTypeName.contains("release")) {
+        def flavorName = variant.flavors*.name
+        if (System.env["CI"] == null && buildTypeName.contains("release") || !flavorName.contains("dev")) {
+            setIgnore(true)
+        }
+        if (System.env["CI"] != null && (buildTypeName.contains("debug") || flavorName.contains("dev"))) {
             setIgnore(true)
         }
     }
