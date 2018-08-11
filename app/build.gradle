@@ -16,6 +16,14 @@ apply plugin: "kotlin-android"
 android {
     compileSdkVersion Integer.parseInt(props_compilesdkversion)
     buildToolsVersion props_buildtoolsversion
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "_proguard/rules.pro"
+            shrinkResources true
+        }
+    }
     defaultConfig {
         versionCode Integer.parseInt(props_versioncode)
         versionName props_versioncode
