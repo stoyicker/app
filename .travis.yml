@@ -16,6 +16,8 @@ before_install:
   - export DOCKER_IMAGE_TAG=26883287a66ab708b84c522c588967e78e8473d9
   - export ARTIFACT_VERSION=$(git rev-list --count HEAD)
   - export TERM=dumb
+  - openssl aes-256-cbc -K $encrypted_18b90288a679_key -iv $encrypted_18b90288a679_iv -in keystores.tar.enc -out keystores.tar -d
+  - tar xvf keystores.tar
   - docker pull stoyicker/docker-android:${DOCKER_IMAGE_TAG}
   - docker tag stoyicker/docker-android:${DOCKER_IMAGE_TAG} stoyicker/docker-android
   - export CONTAINER=$(docker run -dt -p 127.0.0.1:80:4567 -e CI -e ARTIFACT_VERSION -e TERM -e TRAVIS_BRANCH -e REPO_USER -e GITHUB_TOKEN -e TRAVIS_REPO_SLUG stoyicker/docker-android)
