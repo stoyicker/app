@@ -66,10 +66,10 @@ android {
     variantFilter { variant ->
         def buildTypeNames = variant.buildType*.name
         def flavorNames = variant.flavors*.name
-        if (System.env["CI"] == null && (buildTypeNames.contains("release") || !flavorNames.contains("dev"))) {
+        if (System.env["CI"] == null && (!buildTypeNames.contains("debug") || !flavorNames.contains("dev"))) {
             setIgnore(true)
         }
-        if (System.env["CI"] != null && (buildTypeNames.contains("debug") || flavorNames.contains("dev"))) {
+        if (System.env["CI"] != null && ((buildTypeNames.contains("debug") && !flavorNames.contains("dev")) || (!buildTypeNames.contains("debug") && flavorNames.contains("dev")))) {
             setIgnore(true)
         }
     }

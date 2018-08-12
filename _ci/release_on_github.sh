@@ -34,7 +34,7 @@ uploadReleaseToGitHub() {
     # And the id for later use
     RELEASE_ID=$(echo ${RESPONSE_BODY} | jq -r .id)
 
-    cp app/build/outputs/apk/dev/debug/app.apk .
+    cp app/build/outputs/apk/dev/debug/app-dev-debug.apk .
 
     # Attach the artifact
     UPLOAD_URL=$(echo ${UPLOAD_URL} | sed "s/{?name,label}/?name=app-dev-debug.apk/")
