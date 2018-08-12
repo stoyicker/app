@@ -37,12 +37,12 @@ uploadReleaseToGitHub() {
     cp app/build/outputs/apk/dev/debug/app-dev-debug.apk .
 
     # Attach the artifact
-    UPLOAD_URL=$(echo ${UPLOAD_URL} | sed "s/{?name,label}/?name=app-dev-debug.apk/")
+    UPLOAD_URL=$(echo ${UPLOAD_URL} | sed "s/{?name,label}/?name=app-dev-debug-${ARTIFACT_VERSION}.apk/")
     RESPONSE_BODY=$(curl -s \
             -u ${REPO_USER}:${GITHUB_TOKEN} \
             --header "Accept: application/vnd.github.v3+json" \
             --header "Content-Type: application/zip" \
-            --data-binary "@app-release.apk" \
+            --data-binary "@app-dev-debug.apk" \
             --request POST \
             ${UPLOAD_URL})
 
