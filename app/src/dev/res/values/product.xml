@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="product_app_label">App Dev</string>
-    <string name="product_home_url" translatable="false">http://www.hackertyper.com/</string>
+    <color name="product_toolbar_background">#000000</color>
+    
     <mipmap name="ic_launcher">@null</mipmap>
     <mipmap name="ic_launcher_round">@null</mipmap>
+    
+    <string name="product_app_label">App Dev</string>
+    <string name="product_home_url" translatable="false">https://www.squarespace.com/</string>
 </resources>

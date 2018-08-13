@@ -14,4 +14,7 @@ class AssertProduct {
 
     @Test
     fun productHomeUrl() = assert(R.string.product_home_url != 0)
+
+    @Test
+    fun productToolbarColor() = assert(R.color.product_toolbar_background != 0)
 }

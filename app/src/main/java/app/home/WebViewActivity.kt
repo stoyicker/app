@@ -1,10 +1,12 @@
 package app.home
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import app.R
 
 /**
@@ -16,14 +18,13 @@ class WebViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview)
-        val url = intent.getStringExtra(EXTRA_URL)
-        val webView = findViewById<WebView>(R.id.webview)
-        webView.webViewClient = WebViewClient()
-        val webSettings = webView.getSettings()
-        webSettings.javaScriptEnabled = true
-        title = url
-        // TODO Set toolbar color
-        webView.loadUrl(url)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(
+                ContextCompat.getColor(this, R.color.product_toolbar_background)))
+        findViewById<WebView>(R.id.webview).apply {
+            webViewClient = WebViewClient()
+            settings.javaScriptEnabled = true
+            loadUrl(intent.getStringExtra(EXTRA_URL))
+        }
     }
 
     companion object {

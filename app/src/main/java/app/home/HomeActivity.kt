@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsClient
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import app.R
 import app.home.PackageOps.getPackageNameToUse
 
@@ -43,7 +44,8 @@ internal class HomeActivity : AppCompatActivity() {
             setShowTitle(true)
             setInstantAppsEnabled(false)
             enableUrlBarHiding()
-            // TODO Set a color in case the site doesn't have one
+            setToolbarColor(ContextCompat.getColor(
+                    this@HomeActivity, R.color.product_toolbar_background))
         }.build().apply {
             intent.`package` = getPackageNameToUse(this@HomeActivity, productHomeUrl)
             if (intent.`package` == null) {
