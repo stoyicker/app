@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="app">
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +11,7 @@
         android:label="@string/product_app_label">
         <activity
             android:name="app.home.HomeActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:theme="@style/Transparent"
             android:supportsPictureInPicture="true"
             android:maxAspectRatio="3"
             android:launchMode="singleTop"
@@ -20,5 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".home.WebViewActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:supportsPictureInPicture="true"
+            android:maxAspectRatio="3"
+            android:launchMode="singleTop"
+            tools:targetApi="o" />
     </application>
 </manifest>

@@ -82,6 +82,7 @@ final def androidxVersion = "1.0.0-rc01"
 final def junitVersion = "5.2.0"
 dependencies {
     implementation "androidx.appcompat:appcompat:$androidxVersion"
+    implementation "androidx.browser:browser:$androidxVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"

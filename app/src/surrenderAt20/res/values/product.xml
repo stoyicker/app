@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="product_app_label">Surrender at 20</string>
-    <!--<string name="product_home_url" translatable="false">https://www.surrenderat20.net/</string>-->
+    <string name="product_home_url" translatable="false">https://www.surrenderat20.net/</string>
 </resources>
